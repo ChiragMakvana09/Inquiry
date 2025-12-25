@@ -1,0 +1,48 @@
+// :root {
+//   @if variable-exists(colors) {
+//     @each $name, $color in $colors {
+//       @for $i from 0 through 5 {
+//         @if ($i == 0) {
+//           --#{$name}-50: #{tint($color, (5 - $i) * 19%)};
+//         } @else {
+//           --#{$name}-#{$i * 100}: #{tint($color, (5 - $i) * 19%)};
+//         }
+//       }
+
+//       @for $i from 1 through 4 {
+//         --#{$name}-#{($i + 5) * 100}: #{shade($color, $i * 15%)};
+//       }
+//     }
+//   }
+// }
+@use "sass:color";
+
+$colors: (
+  blue: #2196f3,
+  green: #4caf50,
+  yellow: #fbc02d,
+  cyan: #00bcd4,
+  pink: #e91e63,
+  indigo: #3f51b5,
+  teal: #009688,
+  orange: #f57c00,
+  bluegray: #607d8b,
+  purple: #9c27b0,
+  red: #d32f2f,
+  primary: #006699
+);
+
+:root {
+  @each $name, $color in $colors {
+    --#{"#{$name}"}-50: #{color.mix(white, $color, 90%)};
+    --#{"#{$name}"}-100: #{color.mix(white, $color, 70%)};
+    --#{"#{$name}"}-200: #{color.mix(white, $color, 50%)};
+    --#{"#{$name}"}-300: #{color.mix(white, $color, 30%)};
+    --#{"#{$name}"}-400: #{color.mix(white, $color, 10%)};
+    --#{"#{$name}"}-500: #{$color};
+    --#{"#{$name}"}-600: #{color.mix(black, $color, 10%)};
+    --#{"#{$name}"}-700: #{color.mix(black, $color, 30%)};
+    --#{"#{$name}"}-800: #{color.mix(black, $color, 50%)};
+    --#{"#{$name}"}-900: #{color.mix(black, $color, 70%)};
+  }
+}

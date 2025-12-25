@@ -1,0 +1,40 @@
+
+@use '../../../../components/variables' as *;
+@use '../../mixins' as *;
+
+.p-card {
+  background: $panelContentBg;
+  color: $panelContentTextColor;
+  box-shadow: $cardShadow;
+  border-radius: $borderRadius;
+
+  .p-card-body {
+    background: var(--p-card-background);
+        box-shadow: #06182c66 0 0 0 1px, #06182ca6 0 4px 6px -1px, #ffffff14 0 1px inset;
+    border: 0px solid black;
+    border-radius: 10px;
+
+    padding: $cardBodyPadding;
+  }
+
+
+  .p-card-title {
+    font-size: $cardTitleFontSize;
+    font-weight: $cardTitleFontWeight;
+    margin-bottom: $inlineSpacing;
+  }
+
+  .p-card-subtitle {
+    font-weight: $cardSubTitleFontWeight;
+    margin-bottom: $inlineSpacing;
+    color: $cardSubTitleColor;
+  }
+
+  .p-card-content {
+    padding: $cardContentPadding;
+  }
+
+  .p-card-footer {
+    padding: $cardFooterPadding;
+  }
+}

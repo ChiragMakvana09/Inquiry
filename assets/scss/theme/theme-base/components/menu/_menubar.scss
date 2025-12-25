@@ -1,0 +1,95 @@
+@use '../../../../components/variables' as *;
+@use '../../mixins' as *;
+
+.p-menubar {
+  padding: $horizontalMenuPadding;
+  background: $horizontalMenuBg;
+  color: $horizontalMenuTextColor;
+  border: $horizontalMenuBorder;
+  border-radius: $borderRadius;
+
+  .p-menuitem-link {
+    @include menuitem-link();
+  }
+
+  .p-menubar-root-list {
+    > .p-menuitem {
+      > .p-menuitem-link {
+        @include horizontal-rootmenuitem-link();
+      }
+
+      &.p-menuitem-active {
+        > .p-menuitem-link,
+        > .p-menuitem-link:not(.p-disabled):hover {
+          background: $horizontalMenuRootMenuitemActiveBg;
+          .p-menuitem-text {
+            color: $horizontalMenuRootMenuitemTextActiveColor;
+          }
+
+          .p-menuitem-icon {
+            color: $horizontalMenuRootMenuitemIconActiveColor;
+          }
+
+          .p-submenu-icon {
+            color: $horizontalMenuRootMenuitemIconActiveColor;
+          }
+        }
+      }
+    }
+  }
+
+  .p-submenu-list {
+    padding: $verticalMenuPadding;
+    background: $overlayMenuBg;
+    border: $overlayMenuBorder;
+    box-shadow: 15px 15px 15px 0 rgba(0, 0, 0, 0.19) !important;
+    width: $menuWidth;
+
+    .p-menu-separator {
+      border-top: $divider;
+      margin: $menuSeparatorMargin;
+    }
+    .p-menuitem-separator {
+      border-top: $menuseperator;
+      margin: $menuSeparatorMargin;
+    }
+
+    .p-submenu-icon {
+      font-size: $menuitemSubmenuIconFontSize;
+    }
+
+    .p-icon {
+      width: $menuitemSubmenuIconFontSize;
+      height: $menuitemSubmenuIconFontSize;
+    }
+
+    .p-menuitem {
+      margin: $verticalMenuitemMargin;
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+
+  .p-menuitem {
+    &.p-menuitem-active {
+      > .p-menuitem-link {
+        background: $menuitemActiveBg;
+
+        .p-menuitem-text {
+          color: $menuitemTextActiveColor;
+        }
+
+        .p-menuitem-icon,
+        .p-submenu-icon {
+          color: $menuitemIconActiveColor;
+        }
+      }
+    }
+  }
+
+  .p-menuitem-badge {
+    @include menuitem-badge();
+  }
+}

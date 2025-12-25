@@ -1,0 +1,104 @@
+@use '../../../../components/variables' as *;
+@use '../../mixins' as *;
+@use "sass:list";
+
+.p-float-label {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  > label {
+    position: absolute;
+    top: 50%;
+    left: list.nth($inputPadding, 2);
+    transform: translateY(-50%);
+    transition: all $transitionDuration ease-in-out;
+    color: $inputPlaceholderTextColor; // ✅ Removed var(--p-inputtext-color) to match existing SCSS style
+    pointer-events: none;
+  }
+
+  > .p-inputtext {
+    font-family: $fontFamily;
+    font-size: $inputTextFontSize;
+    color: $inputTextColor; 
+    background: $inputBg; 
+    padding: $inputPadding;
+    border: $inputBorder; 
+    transition: $formElementTransition;
+    appearance: none;
+    border-radius: $borderRadius; 
+
+    &:enabled:hover {
+      border-color: $inputHoverBorderColor;
+    }
+
+    &:enabled:focus {
+      @include focused-input();
+    }
+
+    &.ng-touched.ng-invalid {
+      @include invalid-input();
+    }
+
+    &:not(:placeholder-shown) + label,
+    &:focus + label {
+      top: 0;
+      font-size: 0.75rem;
+      color: $primaryColor; 
+      background: $inputBg;
+      padding: 0 0.3rem;
+    }
+  }
+
+  &.p-input-icon-left > .p-icon-wrapper,
+  &.p-input-icon-left > i:first-of-type {
+    left: list.nth($inputPadding, 2);
+    color: $inputIconColor;
+  }
+
+  &.p-input-icon-left > .p-inputtext {
+    padding-left: calc(list.nth($inputPadding, 2) * 2 + $primeIconFontSize);
+  }
+
+  &.p-input-icon-left > label {
+    left: calc(list.nth($inputPadding, 2) * 2 + $primeIconFontSize);
+  }
+
+  &.p-input-icon-right > .p-icon-wrapper,
+  &.p-input-icon-right > i:last-of-type {
+    right: list.nth($inputPadding, 2);
+    color: $inputIconColor; 
+  }
+
+  &.p-input-icon-right > .p-inputtext {
+    padding-right: calc(list.nth($inputPadding, 2) * 2 + $primeIconFontSize);
+  }
+}
+
+@include placeholder {
+  color: $inputPlaceholderTextColor;
+}
+
+.p-input-filled {
+  .p-inputtext {
+    background-color: $inputFilledBg; 
+
+    &:enabled:hover {
+      background-color: $inputFilledHoverBg; 
+    }
+
+    &:enabled:focus {
+      background-color: $inputFilledFocusBg; 
+    }
+  }
+}
+
+input::placeholder {
+  font-style: italic !important;
+  font-weight: 100 !important;
+  font-size: 0.8rem !important;
+}
+
+.p-placeholder {
+  font: 0.5rem !important;
+}

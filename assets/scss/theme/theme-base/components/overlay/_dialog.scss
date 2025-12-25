@@ -1,0 +1,101 @@
+
+@use '../../../../components/variables' as *;
+@use '../../mixins' as *;
+.p-dialog {
+  // border-radius: $borderRadius;
+  // box-shadow: $overlayContainerShadow;
+  // border: $overlayContentBorder;
+  display: flex;
+  flex-direction: column !important;
+  pointer-events: auto !important;
+  transform: scale(1)   !important;
+  position: relative !important;
+  border: 1px solid #006699 !important;
+  /* border-radius: 20px; */
+  border-top-right-radius: $borderRadius;
+  border-top-left-radius: $borderRadius;
+  border-bottom-right-radius: $borderRadius;
+  border-bottom-left-radius: $borderRadius;
+  box-shadow: 5px 5px 20px 0px #222428 !important;
+
+  .p-dialog-header {
+    border-bottom: $dialogHeaderBorder;
+    background: $dialogHeaderBg;
+    color: $dialogHeaderTextColor;
+    // padding: $dialogHeaderPadding;
+    padding: 0.2rem 1rem;   
+     // border-top-right-radius: $borderRadius;
+    border-top-right-radius: 0px;
+    // border-top-left-radius: $borderRadius;
+    border-top-left-radius: 0px;
+
+    .p-dialog-title {
+      font-weight: $dialogHeaderFontWeight;
+      font-size: $dialogHeaderFontSize;
+    }
+
+    .p-dialog-header-icon {
+      @include action-icon();
+      margin-right: $inlineSpacing;
+      color: white !important;
+      height: 1.7rem !important;
+      width: 1.7rem !important;
+      &:last-child {
+        margin-right: 0;
+        .p-icon {
+          height: 1.05rem !important;
+          width: 1.05rem !important;
+        }
+      }
+    }
+  }
+
+  .p-dialog-content {
+    // background: $overlayContentBg;
+    // background: #f9fcff;//Edited
+    background: var(--dialogbgcolor);
+    color: $panelContentTextColor;
+    padding: 1rem;
+    border: $dialogContentBorder;
+
+    &:last-of-type {
+      border-bottom-right-radius: $borderRadius;
+      border-bottom-left-radius: $borderRadius;
+    }
+  }
+
+  .p-dialog-footer {
+   // background: $overlayContentBg;
+  //  background: #f9fcff;//Edited    color: $panelFooterTextColor;
+  background: var(--dialogbgcolor);
+
+    padding: $dialogFooterPadding;
+    text-align: right;
+    // border-bottom-right-radius: $borderRadius;
+    border-bottom-right-radius: 0px;
+    // border-bottom-left-radius: $borderRadius;
+    border-bottom-left-radius: 0px;
+    border: $dialogFooterBorder;
+    border-top: none;
+
+    button {
+      margin: 0 $inlineSpacing 0 0;
+      width: auto;
+    }
+  }
+
+  &.p-confirm-dialog {
+    .p-confirm-dialog-icon {
+      font-size: $primeIconFontSize * 2;
+
+      &.p-icon {
+        width: $primeIconFontSize * 2;
+        height: $primeIconFontSize * 2;
+      }
+    }
+
+    .p-confirm-dialog-message {
+      margin-left: $inlineSpacing * 2;
+    }
+  }
+}

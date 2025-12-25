@@ -1,0 +1,9 @@
+
+
+@use '../../../../components/variables' as *;
+@use '../../mixins' as *;.p-scrollpanel {
+  .p-scrollpanel-bar {
+    background: $scrollPanelTrackBg;
+    border: $scrollPanelTrackBorder;
+  }
+}

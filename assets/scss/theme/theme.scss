@@ -1,0 +1,11 @@
+// @layer primeng {
+//   @import '../components/variables';
+//   @import 'theme-base/_components';
+//   @import 'extensions';
+// }
+
+@use '../components/variables' as * ;
+@use 'theme-base/_components'  as *;
+@use 'extensions' as *;
+@layer primeng {
+}

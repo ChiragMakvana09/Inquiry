@@ -1,0 +1,155 @@
+@use '../../../../components/variables' as *;
+@use '../../mixins' as *;
+@use "sass:list";
+
+.p-select {
+  background: $inputBg;
+  border: $inputBorder;
+  transition: $formElementTransition;
+  border-radius: $borderRadius;
+
+  &:not(.p-disabled):hover {
+    border-color: $inputHoverBorderColor;
+  }
+
+  &:not(.p-disabled).p-focus {
+    @include focused-input();
+  }
+  &.ng-touched.ng-invalid {
+    @include invalid-input();
+  }
+  &.p-select-clearable {
+    .p-select-label {
+      padding-right: list.nth($inputPadding, 2) + $primeIconFontSize;
+    }
+  }
+
+  .p-select-label {
+    background: transparent;
+    border: 0 none;
+
+    &.p-placeholder {
+      color: $inputPlaceholderTextColor;
+      font-style: italic !important;
+      font-weight: 100 !important;
+      font-size: 0.9rem !important;
+    }
+
+    &:enabled:focus {
+      outline: 0 none;
+      box-shadow: none;
+    }
+  }
+
+  .p-select-trigger {
+    background: transparent;
+    color: $inputIconColor;
+    width: $inputGroupAddOnMinWidth;
+    border-top-right-radius: $borderRadius;
+    border-bottom-right-radius: $borderRadius;
+  }
+
+  .p-select-clear-icon {
+    color: $inputIconColor;
+    right: $inputGroupAddOnMinWidth;
+  }
+}
+
+.p-select-panel {
+  background: $inputOverlayBg;
+  color: $inputListTextColor;
+  border: $inputOverlayBorder;
+  border-radius: $borderRadius;
+  box-shadow:
+    rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset !important;
+
+  .p-select-header {
+    padding: $inputListHeaderPadding;
+    border-bottom: $inputListHeaderBorder;
+    color: $inputListHeaderTextColor;
+    background: $inputOverlayHeaderBg;
+    margin: $inputListHeaderMargin;
+    border-top-right-radius: $borderRadius;
+    border-top-left-radius: $borderRadius;
+
+    .p-select-filter {
+      padding-right: list.nth($inputPadding, 2) + $primeIconFontSize;
+      margin-right: -1 * (list.nth($inputPadding, 2) + $primeIconFontSize);
+    }
+
+    .p-select-filter-icon {
+      right: list.nth($inputPadding, 2);
+      color: $inputIconColor;
+    }
+  }
+
+  .p-select-items {
+    padding: $inputListPadding;
+
+    .p-select-item {
+      margin: $inputListItemMargin;
+      padding: 0 !important;
+      border: $inputListItemBorder;
+      color: $inputListItemTextColor;
+      background: $inputListItemBg;
+      transition: $listItemTransition;
+      border-radius: $inputListItemBorderRadius;
+
+      &.p-highlight {
+        color: $inputListItemTextHoverColor;
+        background: $highlightBg;
+      }
+
+      &:not(.p-highlight):not(.p-disabled):hover {
+        color: $inputListItemTextHoverColor;
+        background: $tertiaryColor;
+      }
+    }
+
+    .p-select-empty-message {
+      padding: $inputListItemPadding;
+      color: $inputListItemTextColor;
+      background: $inputListItemBg;
+    }
+
+    .p-select-item-group {
+      margin: $submenuHeaderMargin;
+      padding: $submenuHeaderPadding;
+      color: $submenuHeaderTextColor;
+      background: $submenuHeaderBg;
+      font-weight: $submenuHeaderFontWeight;
+    }
+  }
+}
+
+p-select.ng-touched.ng-invalid > .p-select {
+  @include invalid-input();
+}
+
+.p-input-filled {
+  .p-select {
+    background: $inputFilledBg;
+
+    &:not(.p-disabled):hover {
+      background-color: $inputFilledHoverBg;
+    }
+
+    &:not(.p-disabled).p-focus {
+      background-color: $inputFilledFocusBg;
+
+      .p-inputtext {
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.p-component.p-focus {
+  background: $tertiaryColor !important;
+}
+// .p-select-option:not(.p-select-option-selected):not(.p-disabled).p-focus{
+//   color: red;
+//   background: green;
+// }
